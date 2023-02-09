@@ -1,0 +1,24 @@
+﻿<Window x:Class="BirdyXploit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BirdyXploit"
+        mc:Ignorable="d"
+        Title="BirdyXploit" Height="300" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid Background="Orange">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Name="mainstack">
+            <Label FontSize="48" Foreground="White" Margin="2">BirdyXploit</Label>
+            <Image Source="/Loader.png" Width="40" Height="40" Margin="2" Name="loaderspin" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0" x:Name="rotationspin"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </StackPanel>
+    </Grid>
+</Window>

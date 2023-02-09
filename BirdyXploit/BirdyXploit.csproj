@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <Title>BirdyXploit Roblox Exploit App</Title>
+    <Authors>HAKANKOKCU</Authors>
+    <Description>BirdyXploit Roblox exploit.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="add.png" />
+    <None Remove="add_White.png" />
+    <None Remove="delete.png" />
+    <None Remove="delete_White.png" />
+    <None Remove="inject.png" />
+    <None Remove="inject_White.png" />
+    <None Remove="Loader.png" />
+    <None Remove="menu.png" />
+    <None Remove="menu_White.png" />
+    <None Remove="open.png" />
+    <None Remove="open_White.png" />
+    <None Remove="play.png" />
+    <None Remove="playC.png" />
+    <None Remove="playC_White.png" />
+    <None Remove="play_White.png" />
+    <None Remove="save.png" />
+    <None Remove="save_White.png" />
+    <None Remove="settings.png" />
+    <None Remove="settings_White.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WeAreDevs_API">
+      <HintPath>..\..\..\..\Stuff\WeAreDevs_API.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="add.png" />
+    <Resource Include="add_White.png" />
+    <Resource Include="delete.png" />
+    <Resource Include="delete_White.png" />
+    <Resource Include="inject.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="inject_White.png" />
+    <Resource Include="Loader.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="menu.png" />
+    <Resource Include="menu_White.png" />
+    <Resource Include="open.png" />
+    <Resource Include="open_White.png" />
+    <Resource Include="play.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="playC.png" />
+    <Resource Include="playC_White.png" />
+    <Resource Include="play_White.png" />
+    <Resource Include="save.png" />
+    <Resource Include="save_White.png" />
+    <Resource Include="settings.png" />
+    <Resource Include="settings_White.png" />
+  </ItemGroup>
+
+</Project>
