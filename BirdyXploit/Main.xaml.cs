@@ -19,6 +19,7 @@ using System.ComponentModel;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Windows.Threading;
 using System.Diagnostics;
+using System.Collections;
 
 namespace BirdyXploit
 {
@@ -31,29 +32,46 @@ namespace BirdyXploit
         ExploitAPI api = new();
         int tabid = 0;
         public Dictionary<string, object> jsondata = null;
+        ArrayList autoexecute = new();
         BackgroundWorker injectbw = new();
         public Main(Dictionary<string, object> settings)
         {
             jsondata = settings;
             InitializeComponent();
+            injectbw.WorkerReportsProgress = true;
             injectbw.DoWork += (sender,e) =>
             {
                 try {
                     api.LaunchExploit();
-                    while (!api.isAPIAttached())
+                    injectbw.ReportProgress(20,"Launched Exploit");
+                    System.Threading.Thread.Sleep(2000);
+                    var counterv = 0;
+                    while (api.isAPIAttached() == false || counterv >= 16)
                     {
+                        injectbw.ReportProgress(40, "Exploit wasn't injected. Retrying " + counterv + "/16");
                         System.Threading.Thread.Sleep(2000);
+                        counterv += 1;
                     }
                 }
                 catch (Exception ex) {
-                    MessageBox.Show("ERROR (While injecting): " + ex.Message);
+                    MessageBox.Show("ERROR (While injecting): " + ex.Message,"BirdyXploit");
                 }
             };
+            injectbw.ProgressChanged += (object sender, ProgressChangedEventArgs e) =>
+            {
+                Status.Content = e.UserState;
+            };
+
             injectbw.RunWorkerCompleted += (sender, e) =>
             {
                 injectbutton.IsEnabled = true;
                 executebutton.IsEnabled = true;
                 executecbutton.IsEnabled = true;
+                foreach (TabItem tab in autoexecute)
+                {
+                    TextBox tb = tab.Content as TextBox;
+                    api.SendLuaScript(tb.Text);
+                }
             };
             newTab();
             if ((string)jsondata["Theme"] == "Light")
@@ -67,6 +85,7 @@ namespace BirdyXploit
                 newtabicon.Source = new BitmapImage(new Uri("/add.png", UriKind.Relative));
                 scriptsicon.Source = new BitmapImage(new Uri("/menu.png", UriKind.Relative));
                 settingsicon.Source = new BitmapImage(new Uri("/settings.png", UriKind.Relative));
+                secInjectIcon.Source = new BitmapImage(new Uri("/event.png", UriKind.Relative));
             }
             else
             {
@@ -79,8 +98,10 @@ namespace BirdyXploit
                 newtabicon.Source = new BitmapImage(new Uri("/add_White.png", UriKind.Relative));
                 scriptsicon.Source = new BitmapImage(new Uri("/menu_White.png", UriKind.Relative));
                 settingsicon.Source = new BitmapImage(new Uri("/settings_White.png", UriKind.Relative));
+                secInjectIcon.Source = new BitmapImage(new Uri("/event_White.png", UriKind.Relative));
                 toolbar.Background = Brushes.Black;
                 Mainsp.Background = Brushes.Black;
+                Status.Foreground = Brushes.White;
             }
             this.Topmost = (bool)jsondata["TopMost"];
             saveSettings();
@@ -137,6 +158,16 @@ namespace BirdyXploit
                 };
                 dtautoinject.Start();
             }
+            DispatcherTimer isinjected = new();
+            isinjected.Interval = TimeSpan.FromSeconds(5);
+            isinjected.Tick += (sender, arg) =>
+            {
+                if (!injectbw.IsBusy)
+                {
+                    Status.Content = api.isAPIAttached() ? "Injected!" : "Not Injected...";
+                }
+            };
+            isinjected.Start();
         }
 
         void saveSettings()
@@ -273,6 +304,55 @@ namespace BirdyXploit
         {
             Settings settings = new(jsondata);
             settings.ShowDialog();
+        }
+
+        private void tabs_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!(e.Source is TabItem tabItem))
+            {
+                return;
+            }
+
+            if (Mouse.PrimaryDevice.LeftButton == MouseButtonState.Pressed)
+            {
+                DragDrop.DoDragDrop(tabItem, tabItem, DragDropEffects.All);
+            }
+        }
+
+        private void tabs_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Source is TabItem tabItemTarget &&
+                e.Data.GetData(typeof(TabItem)) is TabItem tabItemSource &&
+                !tabItemTarget.Equals(tabItemSource) &&
+                tabItemTarget.Parent is TabControl tabControl)
+            {
+                int targetIndex = tabControl.Items.IndexOf(tabItemTarget);
+
+                tabControl.Items.Remove(tabItemSource);
+                tabControl.Items.Insert(targetIndex, tabItemSource);
+                tabItemSource.IsSelected = true;
+            }
+        }
+
+        private void secInject_Click(object sender, RoutedEventArgs e)
+        {
+            TabItem currenttab = tabs.SelectedItem as TabItem;
+            if (autoexecute.Contains(currenttab))
+            {
+                autoexecute.Remove(currenttab);
+            }
+            else
+            {
+                autoexecute.Add(currenttab);
+            }
+            if (autoexecute.Contains(currenttab))
+            {
+                (currenttab.Header as StackPanel).Background = Brushes.Gold;
+            }
+            else
+            {
+                (currenttab.Header as StackPanel).Background = null;
+            }
         }
     }
 }

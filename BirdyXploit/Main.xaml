@@ -68,6 +68,15 @@
                         </TextBlock>
                     </Button.ToolTip>
                 </Button>
+                <Button Style="{StaticResource OrangeButton}" Name="secInject" Background="Transparent" BorderThickness="0" Click="secInject_Click">
+                    <Image Name="secInjectIcon" Width="32"></Image>
+                    <Button.ToolTip>
+                        <TextBlock>
+                            Adds or removes the textbox from auto-execute when injected. <LineBreak></LineBreak>
+                            <Bold>WARNING:</Bold> It doesnt execute as LuaC.
+                        </TextBlock>
+                    </Button.ToolTip>
+                </Button>
             </StackPanel>
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
                 <Button Style="{StaticResource OrangeButton}" Name="settings" Background="Transparent" BorderThickness="0" Click="settings_Click">
@@ -97,7 +106,10 @@
                 </StackPanel>
             </ScrollViewer>
         </DockPanel>
-        <TabControl Name="tabs" Padding="0" BorderThickness="0">
+        <StackPanel Name="StatusBar" DockPanel.Dock="Bottom">
+            <Label Padding="2" Name="Status">Ready</Label>
+        </StackPanel>
+        <TabControl Name="tabs" Padding="0" BorderThickness="0" PreviewMouseMove="tabs_PreviewMouseMove" Drop="tabs_Drop" AllowDrop="True">
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabPanel}">
                     <Setter Property="Background" Value="Transparent"/>
@@ -121,6 +133,33 @@
                                         <Setter TargetName="Panel" Property="Background" Value="Transparent" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style TargetType="TabControl">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabControl">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <ScrollViewer HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Hidden" >
+                                        <TabPanel x:Name="HeaderPanel"
+                              Panel.ZIndex ="1" 
+                              KeyboardNavigation.TabIndex="1"
+                              Grid.Column="0"
+                              Grid.Row="0"
+                              Margin="2,2,2,0"
+                              IsItemsHost="true"/>
+                                    </ScrollViewer>
+                                    <ContentPresenter x:Name="PART_SelectedContentHost"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Margin="{TemplateBinding Padding}"
+                                          ContentSource="SelectedContent" Grid.Row="1"/>
+                                </Grid>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
