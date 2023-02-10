@@ -46,9 +46,9 @@ namespace BirdyXploit
                     injectbw.ReportProgress(20,"Launched Exploit");
                     System.Threading.Thread.Sleep(2000);
                     var counterv = 0;
-                    while (api.isAPIAttached() == false || counterv >= 16)
+                    while (api.isAPIAttached() == false && counterv <= 20)
                     {
-                        injectbw.ReportProgress(40, "Exploit wasn't injected. Retrying " + counterv + "/16");
+                        injectbw.ReportProgress(40, "Exploit wasn't injected. Retrying " + counterv + "/20");
                         System.Threading.Thread.Sleep(2000);
                         counterv += 1;
                     }
