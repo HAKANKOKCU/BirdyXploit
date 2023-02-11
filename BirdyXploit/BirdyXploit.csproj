@@ -18,6 +18,8 @@
     <None Remove="delete_White.png" />
     <None Remove="event.png" />
     <None Remove="event_White.png" />
+    <None Remove="grid.png" />
+    <None Remove="grid_White.png" />
     <None Remove="inject.png" />
     <None Remove="inject_White.png" />
     <None Remove="Loader.png" />
@@ -52,6 +54,8 @@
     <Resource Include="delete_White.png" />
     <Resource Include="event.png" />
     <Resource Include="event_White.png" />
+    <Resource Include="grid.png" />
+    <Resource Include="grid_White.png" />
     <Resource Include="inject.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

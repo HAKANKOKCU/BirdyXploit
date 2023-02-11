@@ -12,10 +12,7 @@
             <Image Source="/Loader.png" Width="40" Height="40" Margin="2" Name="loaderspin" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
                         <RotateTransform Angle="0" x:Name="rotationspin"/>
-                        <TranslateTransform/>
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>

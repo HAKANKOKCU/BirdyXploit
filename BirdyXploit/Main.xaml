@@ -1,170 +1,189 @@
 ﻿<Window x:Class="BirdyXploit.Main"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BirdyXploit"
-        mc:Ignorable="d"
-        Title="BirdyXploit" Height="450" Width="800">
-    <DockPanel Name="Mainsp">
-        <DockPanel DockPanel.Dock="Top" LastChildFill="False" Name="toolbar">
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                <Button Style="{StaticResource OrangeButton}" Name="injectbutton" Background="Transparent" BorderThickness="0" Click="injectbutton_Click">
-                    <Image Name="injecticon" Width="32"></Image>
-                    <Button.ToolTip>
-                        <TextBlock>
-                            Injects exploit to roblox.  <LineBreak></LineBreak>
-                            <Bold>WARNING:</Bold> You have to launch roblox before clicking here.
-                        </TextBlock>
-                    </Button.ToolTip>
-                </Button>
-                <Button Style="{StaticResource OrangeButton}" Name="executebutton" Background="Transparent" BorderThickness="0" Click="executebutton_Click">
-                    <Image Name="playicon" Width="32"></Image>
-                    <Button.ToolTip>
-                        <TextBlock>
-                            Executes the script at textbox.  <LineBreak></LineBreak>
-                            <Bold>WARNING:</Bold> You have inject the exploit first before clicking here.
-                        </TextBlock>
-                    </Button.ToolTip>
-                </Button>
-                <Button Style="{StaticResource OrangeButton}" Name="executecbutton" Background="Transparent" BorderThickness="0" Click="executecbutton_Click">
-                    <Image Name="playcicon" Width="32"></Image>
-                    <Button.ToolTip>
-                        <TextBlock>
-                            Executes the script at textbox as LuaC.  <LineBreak></LineBreak>
-                            <Bold>WARNING:</Bold> You have inject the exploit first before clicking here.
-                        </TextBlock>
-                    </Button.ToolTip>
-                </Button>
-                <Button Style="{StaticResource OrangeButton}" Name="clear" Background="Transparent" BorderThickness="0" Click="clear_Click">
-                    <Image Name="clearicon" Width="32"></Image>
-                    <Button.ToolTip>
-                        <TextBlock>
-                            Clears the textbox.
-                        </TextBlock>
-                    </Button.ToolTip>
-                </Button>
-                <Button Style="{StaticResource OrangeButton}" Name="open" Background="Transparent" BorderThickness="0" Click="open_Click">
-                    <Image Name="openicon" Width="32"></Image>
-                    <Button.ToolTip>
-                        <TextBlock>
-                            Loads a file to the textbox.
-                        </TextBlock>
-                    </Button.ToolTip>
-                </Button>
-                <Button Style="{StaticResource OrangeButton}" Name="save" Background="Transparent" BorderThickness="0" Click="save_Click">
-                    <Image Name="saveicon" Width="32"></Image>
-                    <Button.ToolTip>
-                        <TextBlock>
-                            Saves this textbox to a file.
-                        </TextBlock>
-                    </Button.ToolTip>
-                </Button>
-                <Button Style="{StaticResource OrangeButton}" Name="newtab" Background="Transparent" BorderThickness="0" Click="newtab_Click">
-                    <Image Name="newtabicon" Width="32"></Image>
-                    <Button.ToolTip>
-                        <TextBlock>
-                            Creates a new tab.
-                        </TextBlock>
-                    </Button.ToolTip>
-                </Button>
-                <Button Style="{StaticResource OrangeButton}" Name="secInject" Background="Transparent" BorderThickness="0" Click="secInject_Click">
-                    <Image Name="secInjectIcon" Width="32"></Image>
-                    <Button.ToolTip>
-                        <TextBlock>
-                            Adds or removes the textbox from auto-execute when injected. <LineBreak></LineBreak>
-                            <Bold>WARNING:</Bold> It doesnt execute as LuaC.
-                        </TextBlock>
-                    </Button.ToolTip>
-                </Button>
-            </StackPanel>
-            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                <Button Style="{StaticResource OrangeButton}" Name="settings" Background="Transparent" BorderThickness="0" Click="settings_Click">
-                    <Image Name="settingsicon" Width="32"></Image>
-                    <Button.ToolTip>
-                        <TextBlock>
-                            Opens settings menu.  <LineBreak></LineBreak>
-                            <Bold>WARNING:</Bold> You need restart to apply the changes.
-                        </TextBlock>
-                    </Button.ToolTip>
-                </Button>
-                <Button Style="{StaticResource OrangeButton}" Name="scriptslib" Background="Transparent" BorderThickness="0" Click="scriptslib_Click">
-                    <Image Name="scriptsicon" Width="32"></Image>
-                    <Button.ToolTip>
-                        <TextBlock>
-                            Opens your scripts list  <LineBreak></LineBreak>
-                            <Bold>Info:</Bold> To add items here, go to "YourUserDirectory/BirdyXploit/Scripts" and put your scripts there.
-                        </TextBlock>
-                    </Button.ToolTip>
-                </Button>
-            </StackPanel>
-        </DockPanel>
-        <DockPanel DockPanel.Dock="Right" Visibility="Collapsed" Name="scriptspane" Width="300">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <StackPanel Name="scriptsList">
-                    
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:BirdyXploit"
+		mc:Ignorable="d"
+		Title="BirdyXploit" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DockPanel Name="Mainsp">
+            <DockPanel DockPanel.Dock="Top" LastChildFill="False" Name="toolbar">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                    <Button Style="{StaticResource OrangeButton}" Name="injectbutton" Background="Transparent" BorderThickness="0" Click="injectbutton_Click">
+                        <Image Name="injecticon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							Injects exploit to roblox.  <LineBreak></LineBreak>
+							<Bold>WARNING:</Bold> You have to launch roblox before clicking here.
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Style="{StaticResource OrangeButton}" Name="executebutton" Background="Transparent" BorderThickness="0" Click="executebutton_Click">
+                        <Image Name="playicon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							Executes the script at textbox.  <LineBreak></LineBreak>
+							<Bold>WARNING:</Bold> You have inject the exploit first before clicking here.
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Style="{StaticResource OrangeButton}" Name="executecbutton" Background="Transparent" BorderThickness="0" Click="executecbutton_Click">
+                        <Image Name="playcicon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							Executes the script at textbox as LuaC.  <LineBreak></LineBreak>
+							<Bold>WARNING:</Bold> You have inject the exploit first before clicking here.
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Style="{StaticResource OrangeButton}" Name="clear" Background="Transparent" BorderThickness="0" Click="clear_Click">
+                        <Image Name="clearicon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							Clears the textbox.
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Style="{StaticResource OrangeButton}" Name="open" Background="Transparent" BorderThickness="0" Click="open_Click">
+                        <Image Name="openicon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							Loads a file to the textbox.
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Style="{StaticResource OrangeButton}" Name="save" Background="Transparent" BorderThickness="0" Click="save_Click">
+                        <Image Name="saveicon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							Saves this textbox to a file.
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Style="{StaticResource OrangeButton}" Name="newtab" Background="Transparent" BorderThickness="0" Click="newtab_Click">
+                        <Image Name="newtabicon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							Creates a new tab.
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Style="{StaticResource OrangeButton}" Name="secInject" Background="Transparent" BorderThickness="0" Click="secInject_Click">
+                        <Image Name="secInjectIcon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							Adds or removes the textbox from auto-execute when injected. <LineBreak></LineBreak>
+							<Bold>WARNING:</Bold> It doesnt execute as LuaC.
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
                 </StackPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button Style="{StaticResource OrangeButton}" Name="settings" Background="Transparent" BorderThickness="0" Click="settings_Click">
+                        <Image Name="settingsicon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							Opens settings menu.  <LineBreak></LineBreak>
+							<Bold>WARNING:</Bold> You need restart to apply the changes.
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Style="{StaticResource OrangeButton}" Name="scriptblox" Background="Transparent" BorderThickness="0" Click="scriptblox_Click">
+                        <Image Name="scriptbloxicon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							    Opens ScriptBlox Menu
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Style="{StaticResource OrangeButton}" Name="scriptslib" Background="Transparent" BorderThickness="0" Click="scriptslib_Click">
+                        <Image Name="scriptsicon" Width="32"></Image>
+                        <Button.ToolTip>
+                            <TextBlock>
+							Opens your scripts list  <LineBreak></LineBreak>
+							<Bold>Info:</Bold> To add items here, go to "YourUserDirectory/BirdyXploit/Scripts" and put your scripts there.
+                            </TextBlock>
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Right" Visibility="Collapsed" Name="scriptspane" Width="300">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Width="300">
+                    <StackPanel Name="scriptsList">
+
+                    </StackPanel>
+                </ScrollViewer>
+            </DockPanel>
+            <StackPanel Name="StatusBar" DockPanel.Dock="Bottom">
+                <Label Padding="2" Name="Status">Ready</Label>
+            </StackPanel>
+            <TabControl Name="tabs" Padding="0" BorderThickness="0" PreviewMouseMove="tabs_PreviewMouseMove" Drop="tabs_Drop" AllowDrop="True">
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabPanel}">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Grid Name="Panel">
+                                        <ContentPresenter x:Name="ContentSite"
+										VerticalAlignment="Center"
+										HorizontalAlignment="Center"
+										ContentSource="Header"
+										Margin="10,2"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Panel" Property="Background" Value="Orange" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Panel" Property="Background" Value="Transparent" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style TargetType="TabControl">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabControl">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <ScrollViewer HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Hidden" >
+                                            <TabPanel x:Name="HeaderPanel"
+							  Panel.ZIndex ="1" 
+							  KeyboardNavigation.TabIndex="1"
+							  Grid.Column="0"
+							  Grid.Row="0"
+							  Margin="2,2,2,0"
+							  IsItemsHost="true"/>
+                                        </ScrollViewer>
+                                        <ContentPresenter x:Name="PART_SelectedContentHost"
+										  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+										  Margin="{TemplateBinding Padding}"
+										  ContentSource="SelectedContent" Grid.Row="1"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+            </TabControl>
+        </DockPanel>
+        <DockPanel Name="scriptbloxMenu" Background="#7F000000" Visibility="Collapsed">
+            <DockPanel DockPanel.Dock="Top" Height="20" Background="White">
+                <Button Style="{StaticResource OrangeButton}" Click="scriptblox_Click" BorderThickness="0" DockPanel.Dock="Right">Close</Button>
+                <TextBox Background="Transparent" Name="searchTextbox" BorderThickness="0" KeyUp="searchTextbox_KeyUp"></TextBox>
+            </DockPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <WrapPanel Name="scriptsPane" HorizontalAlignment="Center"></WrapPanel>
             </ScrollViewer>
         </DockPanel>
-        <StackPanel Name="StatusBar" DockPanel.Dock="Bottom">
-            <Label Padding="2" Name="Status">Ready</Label>
-        </StackPanel>
-        <TabControl Name="tabs" Padding="0" BorderThickness="0" PreviewMouseMove="tabs_PreviewMouseMove" Drop="tabs_Drop" AllowDrop="True">
-            <TabControl.Resources>
-                <Style TargetType="{x:Type TabPanel}">
-                    <Setter Property="Background" Value="Transparent"/>
-                </Style>
-                <Style TargetType="TabItem">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TabItem">
-                                <Grid Name="Panel">
-                                    <ContentPresenter x:Name="ContentSite"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        ContentSource="Header"
-                                        Margin="10,2"/>
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="Panel" Property="Background" Value="Orange" />
-                                    </Trigger>
-                                    <Trigger Property="IsSelected" Value="False">
-                                        <Setter TargetName="Panel" Property="Background" Value="Transparent" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-                <Style TargetType="TabControl">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TabControl">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <ScrollViewer HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Hidden" >
-                                        <TabPanel x:Name="HeaderPanel"
-                              Panel.ZIndex ="1" 
-                              KeyboardNavigation.TabIndex="1"
-                              Grid.Column="0"
-                              Grid.Row="0"
-                              Margin="2,2,2,0"
-                              IsItemsHost="true"/>
-                                    </ScrollViewer>
-                                    <ContentPresenter x:Name="PART_SelectedContentHost"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          Margin="{TemplateBinding Padding}"
-                                          ContentSource="SelectedContent" Grid.Row="1"/>
-                                </Grid>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TabControl.Resources>
-        </TabControl>
-    </DockPanel>
+    </Grid>
 </Window>
