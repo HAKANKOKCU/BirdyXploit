@@ -54,15 +54,19 @@ namespace BirdyXploit
 					injectbw.ReportProgress(20,"Launched Exploit");
 					System.Threading.Thread.Sleep(2000);
 					var counterv = 0;
-					while (api.isAPIAttached() == false && counterv <= 20)
+					while (api.isAPIAttached() == false && counterv <= 30)
 					{
-						injectbw.ReportProgress(40, "Exploit wasn't injected. Retrying " + counterv + "/20");
+						injectbw.ReportProgress(40, "Exploit wasn't injected. Retrying " + counterv + "/30");
 						System.Threading.Thread.Sleep(2000);
 						counterv += 1;
 					}
+					if (counterv >= 30)
+					{
+						MessageBox.Show("Injection waiting timed out. If its still injecting; Please wait until it injects, then click OK.", "BirdyXploit - Timeout", MessageBoxButton.OK, MessageBoxImage.Warning);
+					}
 				}
 				catch (Exception ex) {
-					MessageBox.Show("ERROR (While injecting): " + ex.Message,"BirdyXploit");
+					MessageBox.Show("ERROR (While injecting): " + ex.Message,"BirdyXploit",MessageBoxButton.OK,MessageBoxImage.Error);
 				}
 			};
 			injectbw.ProgressChanged += (object sender, ProgressChangedEventArgs e) =>
