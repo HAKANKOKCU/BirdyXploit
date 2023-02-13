@@ -1,6 +1,7 @@
 # BirdyXploit
 BirdyXploit is a WRD based no-key open source Roblox exploit app.
 <a href="https://github.com/HAKANKOKCU/BirdyXploit/blob/main/BirdyXploit/bin/Debug/net7.0-windows/net7.0-windows.zip">Download as zip</a>
+(then extract it to a folder then open BirdyXploit.exe)
 # Features
 * Auto inject
 * Auto execute
