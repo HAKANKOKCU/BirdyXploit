@@ -13,7 +13,7 @@ BirdyXploit is a WRD based no-key open source Roblox exploit app.
 # Screenshots
 ![resim](https://user-images.githubusercontent.com/103432992/218266512-7b26de72-5c0d-431a-a57c-003ad320ea74.png)
 
-![resim](https://user-images.githubusercontent.com/103432992/218030741-ef38aa2c-3a71-4568-afc7-09965d0a808a.png)
+![resim](https://user-images.githubusercontent.com/103432992/227607080-70559a89-e959-4936-a1c5-86b7c6deb5c3.png)
 
 ![resim](https://user-images.githubusercontent.com/103432992/218266543-8874d000-ee1e-4e68-982c-08ab45a47824.png)
 
