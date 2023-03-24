@@ -28,6 +28,15 @@ namespace BirdyXploit
 			jsondata = settings;
 			InitializeComponent();
 			Darkmode.IsChecked = (string)jsondata["Theme"] == "Dark";
+			if ((string)jsondata["Theme"] == "Dark")
+			{
+				mainbg.Background = Brushes.Black;
+				Darkmode.Foreground = Brushes.White;
+                Topmosta.Foreground = Brushes.White;
+                AutoInject.Foreground = Brushes.White;
+				RestartButton.Background = Brushes.DarkGray;
+				RestartButton.Foreground = Brushes.White;
+            }
 			Topmosta.IsChecked = (bool)jsondata["TopMost"];
 			AutoInject.IsChecked = (bool)jsondata["AutoInject"];
 			this.Topmost = (bool)jsondata["TopMost"];

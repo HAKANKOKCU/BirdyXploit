@@ -6,10 +6,10 @@
 		xmlns:local="clr-namespace:BirdyXploit"
 		mc:Ignorable="d"
 		Title="Settings" Height="400" Width="300">
-	<StackPanel>
+	<StackPanel Name="mainbg">
 		<CheckBox Name="Darkmode" Click="Darkmode_Click">Dark Mode</CheckBox>
 		<CheckBox Name="Topmosta" Click="Topmost_Click">Top Most</CheckBox>
 		<CheckBox Name="AutoInject" Click="AutoInject_Click">Auto Inject</CheckBox>
-		<Button BorderThickness="0" Style="{StaticResource OrangeButton}" Name="RestartButton" Click="RestartButton_Click">Restart</Button>
+		<Button BorderThickness="0" Style="{StaticResource OrangeButtonClassic}" Name="RestartButton" Click="RestartButton_Click">Restart</Button>
 	</StackPanel>
 </Window>

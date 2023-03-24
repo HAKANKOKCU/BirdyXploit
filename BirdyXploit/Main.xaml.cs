@@ -118,6 +118,9 @@ namespace BirdyXploit
 				Status.Foreground = Brushes.White;
                 backgroundcolor = Brushes.Black;
                 foregroundcolor = Brushes.White;
+				InjectLabel.Foreground = Brushes.White;
+                ExecuteLabel.Foreground = Brushes.White;
+				TextboxSelected.Foreground = Brushes.White;
             }
 			this.Topmost = (bool)jsondata["TopMost"];
 			saveSettings();
@@ -127,7 +130,8 @@ namespace BirdyXploit
 				try
 				{
 					Button buttonset = new();
-					buttonset.Style = (Style)Resources["OrangeButton"];
+					buttonset.Style = (Style)Application.Current.Resources["OrangeButtonClassic"];
+					buttonset.ApplyTemplate();
 					buttonset.BorderThickness = new Thickness(0);
 					buttonset.Background = Brushes.Transparent;
 					buttonset.Content = System.IO.Path.GetFileName(file);
@@ -192,6 +196,16 @@ namespace BirdyXploit
 			File.WriteAllText(userpath + "\\BirdyXploit\\Settings.json", settingsstring);
 		}
 
+		void showcursorinfo()
+		{
+            TabItem tab = tabs.SelectedItem as TabItem;
+			if (tab != null)
+			{
+                TextBox tb = tab.Content as TextBox;
+                TextboxSelected.Content = " Cursor: " + ((tb.SelectionLength == 0) ? tb.SelectionStart.ToString() : tb.SelectionStart.ToString() + "-" + (tb.SelectionStart + tb.SelectionLength).ToString() + " (" + tb.SelectionLength + ")");
+            }
+		}
+
 		void newTab()
 		{
 			TabItem tab = new();
@@ -211,6 +225,7 @@ namespace BirdyXploit
 			tb.AcceptsTab = true;
 			tb.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
 			tb.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
+			tb.SelectionChanged += (s, e) => { showcursorinfo(); };
 			tb.BorderThickness = new Thickness(0);
 			tb.SelectionBrush = Brushes.Orange;
 			if ((string)jsondata["Theme"] == "Light")
@@ -477,6 +492,21 @@ namespace BirdyXploit
                     forgame.Padding = new Thickness(0);
 					forgame.Foreground = foregroundcolor;
                     forgame.Content = "For " + script["game"]["name"] + " (" + script["game"]["gameId"] + ")";
+					forgame.Foreground = Brushes.Orange;
+					forgame.Cursor = Cursors.Hand;
+					forgame.PreviewMouseUp += (s, e) => {
+						try
+						{
+							Process myProcess = new();
+                            myProcess.StartInfo.UseShellExecute = true;
+                            myProcess.StartInfo.FileName = "https://www.roblox.com/games/" + script["game"]["gameId"];
+                            myProcess.Start();
+                        }
+						catch (Exception ex)
+						{
+							MessageBox.Show(ex.Message, "BirdyXploit - Cannot open link", MessageBoxButton.OK, MessageBoxImage.Error);
+						}
+					};
                     spitem.Children.Add(forgame);
 					if (script["owner"] != null)
 					{
@@ -491,6 +521,8 @@ namespace BirdyXploit
                     selectbtn.Background = Brushes.Transparent;
                     selectbtn.BorderBrush = Brushes.Transparent;
                     selectbtn.Padding = new Thickness(0);
+					selectbtn.Style = (Style)Application.Current.Resources["OrangeButtonClassic"];
+					selectbtn.ApplyTemplate();
                     selectbtn.Content = "Select Script";
                     selectbtn.Click += (s, e) =>
                     {
@@ -539,6 +571,18 @@ namespace BirdyXploit
                     });
                 });
             }
+        }
+
+        private void tabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+			try
+			{
+                showcursorinfo();
+            }
+            catch (Exception err)
+			{
+
+			}
         }
     }
 }

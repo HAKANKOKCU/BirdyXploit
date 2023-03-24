@@ -9,78 +9,86 @@
     <Grid>
         <DockPanel Name="Mainsp">
             <DockPanel DockPanel.Dock="Top" LastChildFill="False" Name="toolbar">
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                    <Button Style="{StaticResource OrangeButton}" Name="injectbutton" Background="Transparent" BorderThickness="0" Click="injectbutton_Click">
-                        <Image Name="injecticon" Width="32"></Image>
-                        <Button.ToolTip>
-                            <TextBlock>
+                <Border CornerRadius="28" ClipToBounds="True">
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                        <Button Padding="3" Style="{StaticResource OrangeButton}" Name="injectbutton" Background="Transparent" BorderThickness="0" Click="injectbutton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="injecticon" Width="32"></Image>
+                                <Label FontWeight="Bold" Name="InjectLabel" VerticalAlignment="Center" Padding="0">Inject</Label>
+                            </StackPanel>
+                            <Button.ToolTip>
+                                <TextBlock>
 							Injects exploit to roblox.  <LineBreak></LineBreak>
 							<Bold>WARNING:</Bold> You have to launch roblox before clicking here.
-                            </TextBlock>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Style="{StaticResource OrangeButton}" Name="executebutton" Background="Transparent" BorderThickness="0" Click="executebutton_Click">
-                        <Image Name="playicon" Width="32"></Image>
-                        <Button.ToolTip>
-                            <TextBlock>
+                                </TextBlock>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button Padding="3" Style="{StaticResource OrangeButton}" Name="executebutton" Background="Transparent" BorderThickness="0" Click="executebutton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="playicon" Width="32"></Image>
+                                <Label FontWeight="Bold" Name="ExecuteLabel"  VerticalAlignment="Center" Padding="0">Execute</Label>
+                            </StackPanel>
+                            <Button.ToolTip>
+                                <TextBlock>
 							Executes the script at textbox.  <LineBreak></LineBreak>
 							<Bold>WARNING:</Bold> You have inject the exploit first before clicking here.
-                            </TextBlock>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Style="{StaticResource OrangeButton}" Name="executecbutton" Background="Transparent" BorderThickness="0" Click="executecbutton_Click">
-                        <Image Name="playcicon" Width="32"></Image>
-                        <Button.ToolTip>
-                            <TextBlock>
+                                </TextBlock>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button Padding="3" Style="{StaticResource OrangeButton}" Name="executecbutton" Background="Transparent" BorderThickness="0" Click="executecbutton_Click">
+                            <Image Name="playcicon" Width="32"></Image>
+                            <Button.ToolTip>
+                                <TextBlock>
 							Executes the script at textbox as LuaC.  <LineBreak></LineBreak>
 							<Bold>WARNING:</Bold> You have inject the exploit first before clicking here.
-                            </TextBlock>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Style="{StaticResource OrangeButton}" Name="clear" Background="Transparent" BorderThickness="0" Click="clear_Click">
-                        <Image Name="clearicon" Width="32"></Image>
-                        <Button.ToolTip>
-                            <TextBlock>
+                                </TextBlock>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button Padding="3" Style="{StaticResource OrangeButton}" Name="clear" Background="Transparent" BorderThickness="0" Click="clear_Click">
+                            <Image Name="clearicon" Width="32"></Image>
+                            <Button.ToolTip>
+                                <TextBlock>
 							Clears the textbox.
-                            </TextBlock>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Style="{StaticResource OrangeButton}" Name="open" Background="Transparent" BorderThickness="0" Click="open_Click">
-                        <Image Name="openicon" Width="32"></Image>
-                        <Button.ToolTip>
-                            <TextBlock>
+                                </TextBlock>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button Padding="3" Style="{StaticResource OrangeButton}" Name="open" Background="Transparent" BorderThickness="0" Click="open_Click">
+                            <Image Name="openicon" Width="32"></Image>
+                            <Button.ToolTip>
+                                <TextBlock>
 							Loads a file to the textbox.
-                            </TextBlock>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Style="{StaticResource OrangeButton}" Name="save" Background="Transparent" BorderThickness="0" Click="save_Click">
-                        <Image Name="saveicon" Width="32"></Image>
-                        <Button.ToolTip>
-                            <TextBlock>
+                                </TextBlock>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button Padding="3" Style="{StaticResource OrangeButton}" Name="save" Background="Transparent" BorderThickness="0" Click="save_Click">
+                            <Image Name="saveicon" Width="32"></Image>
+                            <Button.ToolTip>
+                                <TextBlock>
 							Saves this textbox to a file.
-                            </TextBlock>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Style="{StaticResource OrangeButton}" Name="newtab" Background="Transparent" BorderThickness="0" Click="newtab_Click">
-                        <Image Name="newtabicon" Width="32"></Image>
-                        <Button.ToolTip>
-                            <TextBlock>
+                                </TextBlock>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button Padding="3" Style="{StaticResource OrangeButton}" Name="newtab" Background="Transparent" BorderThickness="0" Click="newtab_Click">
+                            <Image Name="newtabicon" Width="32"></Image>
+                            <Button.ToolTip>
+                                <TextBlock>
 							Creates a new tab.
-                            </TextBlock>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Style="{StaticResource OrangeButton}" Name="secInject" Background="Transparent" BorderThickness="0" Click="secInject_Click">
-                        <Image Name="secInjectIcon" Width="32"></Image>
-                        <Button.ToolTip>
-                            <TextBlock>
+                                </TextBlock>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button Padding="3" Style="{StaticResource OrangeButton}" Name="secInject" Background="Transparent" BorderThickness="0" Click="secInject_Click">
+                            <Image Name="secInjectIcon" Width="32"></Image>
+                            <Button.ToolTip>
+                                <TextBlock>
 							Adds or removes the textbox from auto-execute when injected. <LineBreak></LineBreak>
 							<Bold>WARNING:</Bold> It doesnt execute as LuaC.
-                            </TextBlock>
-                        </Button.ToolTip>
-                    </Button>
-                </StackPanel>
+                                </TextBlock>
+                            </Button.ToolTip>
+                        </Button>
+                    </StackPanel>
+                </Border>
                 <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                    <Button Style="{StaticResource OrangeButton}" Name="settings" Background="Transparent" BorderThickness="0" Click="settings_Click">
+                    <Button Padding="3" Style="{StaticResource OrangeButton}" Name="settings" Background="Transparent" BorderThickness="0" Click="settings_Click">
                         <Image Name="settingsicon" Width="32"></Image>
                         <Button.ToolTip>
                             <TextBlock>
@@ -89,7 +97,7 @@
                             </TextBlock>
                         </Button.ToolTip>
                     </Button>
-                    <Button Style="{StaticResource OrangeButton}" Name="scriptblox" Background="Transparent" BorderThickness="0" Click="scriptblox_Click">
+                    <Button Padding="3" Style="{StaticResource OrangeButton}" Name="scriptblox" Background="Transparent" BorderThickness="0" Click="scriptblox_Click">
                         <Image Name="scriptbloxicon" Width="32"></Image>
                         <Button.ToolTip>
                             <TextBlock>
@@ -97,7 +105,7 @@
                             </TextBlock>
                         </Button.ToolTip>
                     </Button>
-                    <Button Style="{StaticResource OrangeButton}" Name="scriptslib" Background="Transparent" BorderThickness="0" Click="scriptslib_Click">
+                    <Button Padding="3" Style="{StaticResource OrangeButton}" Name="scriptslib" Background="Transparent" BorderThickness="0" Click="scriptslib_Click">
                         <Image Name="scriptsicon" Width="32"></Image>
                         <Button.ToolTip>
                             <TextBlock>
@@ -115,10 +123,11 @@
                     </StackPanel>
                 </ScrollViewer>
             </DockPanel>
-            <StackPanel Name="StatusBar" DockPanel.Dock="Bottom">
+            <StackPanel Name="StatusBar" DockPanel.Dock="Bottom" Orientation="Horizontal">
                 <Label Padding="2" Name="Status">Ready</Label>
+                <Label Padding="2" Name="TextboxSelected"></Label>
             </StackPanel>
-            <TabControl Name="tabs" Padding="0" BorderThickness="0" PreviewMouseMove="tabs_PreviewMouseMove" Drop="tabs_Drop" AllowDrop="True">
+            <TabControl Name="tabs" Padding="0" BorderThickness="0" PreviewMouseMove="tabs_PreviewMouseMove" Drop="tabs_Drop" AllowDrop="True" SelectionChanged="tabs_SelectionChanged">
                 <TabControl.Resources>
                     <Style TargetType="{x:Type TabPanel}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -127,19 +136,21 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="TabItem">
-                                    <Grid Name="Panel">
-                                        <ContentPresenter x:Name="ContentSite"
+                                    <Border Name="bdr" CornerRadius="10 10 0 0">
+                                        <Grid Name="Panel">
+                                            <ContentPresenter x:Name="ContentSite"
 										VerticalAlignment="Center"
 										HorizontalAlignment="Center"
 										ContentSource="Header"
 										Margin="10,2"/>
-                                    </Grid>
+                                        </Grid>
+                                    </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Panel" Property="Background" Value="Orange" />
+                                            <Setter TargetName="bdr" Property="Background" Value="Orange" />
                                         </Trigger>
                                         <Trigger Property="IsSelected" Value="False">
-                                            <Setter TargetName="Panel" Property="Background" Value="Transparent" />
+                                            <Setter TargetName="bdr" Property="Background" Value="Transparent" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
