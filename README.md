@@ -1,4 +1,4 @@
-WRD isnt working anymore!!!
+# WRD isnt working anymore!!! DONT USE THIS
 
 # BirdyXploit
 BirdyXploit is a WRD based no-key open source Roblox exploit app.
